@@ -1,4 +1,4 @@
-package dotgen;
+package jdotgen;
 
 import java.io.PrintStream;
 import java.io.StringWriter;

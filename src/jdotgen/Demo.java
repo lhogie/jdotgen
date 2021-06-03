@@ -1,4 +1,4 @@
-package dotgen;
+package jdotgen;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import toools.io.file.RegularFile;
 
 public class Demo {
 	public static void main(String[] args) {
-		final var text = "salut";
+		final var text = "This is just an example text!!!";
 
 		var w = new DotWriter() {
 			@Override
@@ -37,7 +37,7 @@ public class Demo {
 		};
 
 		w.toDot(System.out);
-
+System.out.println(w.toPDF().length +  " bytes");
 		new RegularFile("$HOME/a.pdf").setContent(w.toPDF());
 
 	}
