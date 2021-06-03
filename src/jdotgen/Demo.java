@@ -35,7 +35,7 @@ public class Demo {
 
 		System.out.println(w);
 		System.out.println(w.toPDF().length + " bytes");
-		new RegularFile("$HOME/a.pdf").setContent(w.toPDF());
+		new RegularFile("example-output.pdf").setContent(w.toPDF());
 
 	}
 }
