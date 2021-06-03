@@ -1,8 +1,11 @@
-package jdotgen;
+package jdotgen.demo;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import jdotgen.Edge;
+import jdotgen.Graph;
+import jdotgen.Vertex;
 import toools.io.file.RegularFile;
 
 public class Demo {

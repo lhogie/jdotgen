@@ -11,10 +11,10 @@ public class Edge implements Dottable {
 		plain, dotted
 	};
 
-	String from;
-	List<String> to = new ArrayList<>();
-	String style;
-	boolean directed;
+	public String from;
+	public final List<String> to = new ArrayList<>();
+	public String style;
+	public boolean directed;
 
 	@Override
 	public void toDot(PrintStream o) {
