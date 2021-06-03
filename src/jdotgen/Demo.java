@@ -1,6 +1,6 @@
 package jdotgen;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import toools.io.file.RegularFile;
 
@@ -12,17 +12,10 @@ public class Demo {
 			@Override
 			protected void findEdges(EdgeConsumer e) {
 				String t = text.replaceAll("[^a-zA-Z0-9]", "");
-				
+
 				for (int i = 0; i < t.length() - 1; ++i) {
-					var l = new ArrayList<String>();
-
-					for (int j = i + 1; j < t.length(); ++j) {
-						l.add( ""+t.charAt(j));
-					}
-
-					e.accept("" + t.charAt(i), l, true, "line");
+					e.accept("" + t.charAt(i), List.of("" + t.charAt(i+1)), true, "line");
 				}
-
 			}
 
 			@Override
@@ -41,7 +34,7 @@ public class Demo {
 		};
 
 		System.out.println(w);
-System.out.println(w.toPDF().length +  " bytes");
+		System.out.println(w.toPDF().length + " bytes");
 		new RegularFile("$HOME/a.pdf").setContent(w.toPDF());
 
 	}
