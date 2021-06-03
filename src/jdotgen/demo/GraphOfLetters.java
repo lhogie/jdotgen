@@ -8,12 +8,11 @@ import jdotgen.Graph;
 import jdotgen.Vertex;
 import toools.io.file.RegularFile;
 
-public class Demo {
+public class GraphOfLetters {
 	public static void main(String[] args) {
 		final var text = "Hello world!";
 
 		var w = new Graph() {
-
 			@Override
 			protected boolean isDirected() {
 				return true;
@@ -51,7 +50,6 @@ public class Demo {
 		};
 
 		System.out.println(w);
-		System.out.println(w.toPDF().length + " bytes");
 		new RegularFile("example-output.pdf").setContent(w.toPDF());
 
 	}
