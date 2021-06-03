@@ -1,7 +1,7 @@
 package jdotgen;
 
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.io.StringWriter;
 
 import toools.gui.GraphViz;
 import toools.gui.GraphViz.COMMAND;
@@ -11,16 +11,21 @@ import toools.text.TextUtilities;
 public abstract class DotWriter {
 	@Override
 	public String toString() {
-		StringWriter w = new StringWriter();
-
-		// toDot(new OutputStreamWriter(null));
-
-		return w.toString();
+		var bos = new ByteArrayOutputStream();
+		var ps = new PrintStream(bos);
+		toDot(ps);
+		ps.close();
+		return new String(bos.toByteArray());
 	}
 
-	public enum Shape {round, box}
-	public enum Style {plain, dotted};
-	
+	public enum Shape {
+		round, box
+	}
+
+	public enum Style {
+		plain, dotted
+	};
+
 	public void toDot(PrintStream o) {
 		o.println((isDirected() ? "di" : "") + "graph {");
 

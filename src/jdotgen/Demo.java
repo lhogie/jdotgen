@@ -11,22 +11,26 @@ public class Demo {
 		var w = new DotWriter() {
 			@Override
 			protected void findEdges(EdgeConsumer e) {
-				for (int i = 0; i < text.length() - 1; ++i) {
+				String t = text.replaceAll("[^a-zA-Z0-9]", "");
+				
+				for (int i = 0; i < t.length() - 1; ++i) {
 					var l = new ArrayList<String>();
 
-					for (int j = i + 1; j < text.length(); ++j) {
-						l.add("" + text.charAt(j));
+					for (int j = i + 1; j < t.length(); ++j) {
+						l.add( ""+t.charAt(j));
 					}
 
-					e.accept("" + text.charAt(i), l, true, "line");
+					e.accept("" + t.charAt(i), l, true, "line");
 				}
 
 			}
 
 			@Override
 			protected void findVertices(VertexConsumer e) {
-				for (int i = 0; i < text.length(); ++i) {
-					e.accept("" + text.charAt(i), null);
+				String t = text.replaceAll("[^a-zA-Z0-9]", "");
+
+				for (int i = 0; i < t.length(); ++i) {
+					e.accept("" + t.charAt(i), null);
 				}
 			}
 
@@ -36,7 +40,7 @@ public class Demo {
 			}
 		};
 
-		w.toDot(System.out);
+		System.out.println(w);
 System.out.println(w.toPDF().length +  " bytes");
 		new RegularFile("$HOME/a.pdf").setContent(w.toPDF());
 
