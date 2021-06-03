@@ -11,7 +11,13 @@ public class Vertex implements Dottable {
 	public Shape shape;
 
 	public void toDot(PrintStream o) {
-		o.println("\t" + id + "\t" + (label == null ? "" : "label=" + label) + ";");
+		o.print("\t" + id);
+
+		if (label != null) {
+			o.print("\t" + label);
+		}
+
+		o.println(";");
 	}
 
 }

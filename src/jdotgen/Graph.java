@@ -12,9 +12,11 @@ import toools.gui.GraphViz.OUTPUT_FORMAT;
 
 public abstract class Graph {
 
-	public enum Style {
-		plain, dotted
-	};
+	protected abstract boolean isDirected();
+
+	protected abstract Set<Edge> edges();
+
+	protected abstract Set<Vertex> vertices();
 
 	public void toDot(PrintStream o) {
 		o.println((isDirected() ? "di" : "") + "graph {");
@@ -27,12 +29,6 @@ public abstract class Graph {
 	public byte[] toPDF() {
 		return GraphViz.toBytes(COMMAND.dot, toString(), OUTPUT_FORMAT.pdf);
 	}
-
-	protected abstract boolean isDirected();
-
-	protected abstract Set<Edge> edges();
-
-	protected abstract Set<Vertex> vertices();
 
 	public List<String> freeLines() {
 		return Collections.EMPTY_LIST;

@@ -7,7 +7,7 @@ import toools.io.file.RegularFile;
 
 public class Demo {
 	public static void main(String[] args) {
-		final var text = "This is just an example text!!!";
+		final var text = "Hello world!";
 
 		var w = new Graph() {
 

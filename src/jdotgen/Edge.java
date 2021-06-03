@@ -7,6 +7,10 @@ import java.util.List;
 import toools.text.TextUtilities;
 
 public class Edge implements Dottable {
+	public enum Style {
+		plain, dotted
+	};
+
 	String from;
 	List<String> to = new ArrayList<>();
 	String style;
@@ -14,7 +18,7 @@ public class Edge implements Dottable {
 
 	@Override
 	public void toDot(PrintStream o) {
-		var tos = "{" + TextUtilities.concatene(to, " ") + "}";
+		var tos = to.size() == 1 ? to.get(0) : "{" + TextUtilities.concatene(to, " ") + "}";
 		o.println("\t" + from + (directed ? " -> " : " -- ") + tos + ";");
 	}
 }
