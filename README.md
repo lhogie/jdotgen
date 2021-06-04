@@ -25,4 +25,4 @@ digraph {
 }
 ```
 
-![](example-output.pdf)
+![](example-output.png)
