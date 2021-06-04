@@ -24,3 +24,5 @@ digraph {
 	l -> o;
 }
 ```
+
+![](example-output.pdf)
