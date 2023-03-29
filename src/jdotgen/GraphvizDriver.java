@@ -3,10 +3,12 @@ package jdotgen;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 
 import toools.extern.Proces;
+import toools.text.TextUtilities;
 
-public abstract class DotWriter {
+public abstract class GraphvizDriver {
 
 	VertexProps v = new VertexProps();
 	EdgeProps e = new EdgeProps();
@@ -36,18 +38,46 @@ public abstract class DotWriter {
 		o.println("digraph {");
 
 		findVertices(v, () -> {
-			o.print("\t" + v.id + "\t" + "[");
-			o.print("label=" + v.label);
-			o.print(", shape=" + v.shape);
-			o.print(", style=" + v.style);
-			o.println("];");
+			o.print("\t" + v.id);
+			var p = new ArrayList<String>();
+
+			if (v.label != null) {
+				p.add("label=" + v.label);
+			}
+
+			if (v.shape != null) {
+				p.add("shape=" + v.shape);
+			}
+
+			if (v.style != null) {
+				p.add("style=" + v.style);
+			}
+
+			if (!p.isEmpty()) {
+				o.println("\t" + "[" + TextUtilities.concat(", ", p) + "]");
+			}
+
+			o.println(";");
 		});
 
 		findEdges(e, () -> {
-			o.print("\t" + e.from + " -> " + e.to + "\t" + "[");
-			o.print("edgetail=none");
-			o.print(", style=" + v.style);
-			o.println("];");
+			o.print("\t" + e.from + " -> " + e.to);
+			
+			var p = new ArrayList<String>();
+
+			if (!e.directed) {
+				p.add("edgetail=none");
+			}
+
+			if (e.style != null) {
+				p.add("style=" + v.style);
+			}
+			
+			if (!p.isEmpty()) {
+				o.println("\t" + "[" + TextUtilities.concat(", ", p) + "]");
+			}
+
+			o.println(";");
 		});
 
 		o.println("}");
@@ -80,7 +110,6 @@ public abstract class DotWriter {
 		return Proces.exec(c, dotText.getBytes(), "-T" + of.name());
 	}
 
-	
 	protected abstract void findEdges(EdgeProps e, Validator f);
 
 	protected abstract void findVertices(VertexProps v, Validator f);

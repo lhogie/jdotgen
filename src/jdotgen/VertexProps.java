@@ -5,7 +5,7 @@ public class VertexProps extends Props {
 		circle, box
 	}
 
-	Shape shape = Shape.circle;
-	int size = 10;
-	Object id;
+	public Shape shape;
+	public int size = 10;
+	public 	Object id;
 }

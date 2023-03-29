@@ -5,6 +5,10 @@ public class Props {
 		plain, dotted
 	};
 
-	Style style = Style.plain;
-	Object label;
+	public Style style;
+	public Object label;
+	
+	public void commit() {
+		
+	};
 }

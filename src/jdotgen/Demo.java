@@ -7,7 +7,7 @@ public class Demo {
 	public static void main(String[] args) {
 		final var text = "salut";
 
-		var w = new DotWriter() {
+		var w = new GraphvizDriver() {
 			@Override
 			protected void findVertices(VertexProps v, Validator f) {
 				for (int i = 0; i < text.length(); ++i) {
@@ -33,7 +33,7 @@ public class Demo {
 
 		System.out.println(w.toDot());
 
-		DotWriter.pathToCommands = "/usr/local/bin/";
+		GraphvizDriver.pathToCommands = "/usr/local/bin/";
 		var img = new RegularFile("$HOME/a.pdf");
 		img.setContent(w.toPDF());
 		img.open();

@@ -1,6 +1,6 @@
 package jdotgen;
 
 public class EdgeProps extends Props {
-	Object from, to;
-	boolean directed = true;
+	public Object from, to;
+	public boolean directed = true;
 }
