@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.lhogie</groupId>
 	<artifactId>jdotgen</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.2-SNAPSHOT</version>
 	<name>Idawi</name>
 	<description>A Graphviz driver for Java application</description>
 	<url>https://github.com/lhogie/idawi</url>
@@ -38,7 +38,7 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>src/main/java</directory>
+				<directory>src</directory>
 				<includes>
 					<include>**/*.*</include>
 				</includes>
@@ -73,7 +73,7 @@
 		<dependency>
 			<groupId>io.github.lhogie</groupId>
 			<artifactId>toools</artifactId>
-			<version>0.0.9-SNAPSHOT</version>
+			<version>0.0.9</version>
 		</dependency>
 	</dependencies>
 	<distributionManagement>
