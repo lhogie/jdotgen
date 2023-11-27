@@ -2,13 +2,11 @@ package jdotgen;
 
 public class Props {
 	public enum Style {
-		plain, dotted
+		solid, dotted, dashed, invis, bold, filled
 	};
 
 	public Style style;
-	public Object label;
-	
-	public void commit() {
-		
-	};
+	public String label;
+	public int penwidth = 1;
+
 }
