@@ -72,7 +72,7 @@
 		<dependency>
 			<groupId>io.github.lhogie</groupId>
 			<artifactId>toools</artifactId>
-			<version>0.0.10-SNAPSHOT</version>
+			<version>[0.0.0,)</version>
 		</dependency>
 	</dependencies>
 	<distributionManagement>
